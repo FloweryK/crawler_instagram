@@ -36,7 +36,7 @@ You may find the result in `coffee.json` .
 
 ## Arguments
 
-```python
+```bash
 $ python tag_crawler.py -h
 usage: tag_crawler.py [-h] --tag TAG [--limit LIMIT]
 
