@@ -52,7 +52,7 @@ $ python crawler.py --mode tag --target coffee
 
  `coffee.json`  파일은 각 포스트의 고유한 id를 key로, 포스트의 내용과 관련된 메타데이터를 value로 가지며, 메타데이터는 다시 종류별로 각각 key와 value를 가집니다. 아래는 `coffee.json` 을 열어 본 것입니다. 
 
-![](_src\img\json.PNG)
+![](_src/img/json.PNG)
 
 | Key                | Value                                    |
 | ------------------ | ---------------------------------------- |
@@ -73,11 +73,11 @@ $ python crawler.py --mode tag --target coffee
 
 예를 들어 합정역으로 위치 정보를 입력한 포스트들을 크롤링한다고 하면, 먼저 아래와 같이 합정역의 location ID를 얻을 수 있습니다. 
 
-![Inkedlocaion_guide_01](_src\img\Inkedlocaion_guide_01.jpg)
+![Inkedlocaion_guide_01](_src/img/Inkedlocaion_guide_01.jpg)
 
 
 
-![Inkedlocaion_guide_02](_src\img\Inkedlocaion_guide_02.jpg)
+![Inkedlocaion_guide_02](_src/img/Inkedlocaion_guide_02.jpg)
 
 
 
