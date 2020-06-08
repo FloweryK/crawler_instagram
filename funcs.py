@@ -53,7 +53,7 @@ def get_html(url):
     return False
 
 
-def get_edges(html):
+def get_edges(html, mode):
     html_parsed = BeautifulSoup(html, 'html.parser')
     data = html_parsed.find_all("script", {"type": "text/javascript"})
     scripts = ''
@@ -62,7 +62,14 @@ def get_edges(html):
             scripts = str(_data)
 
     json_data = json.loads(scripts.split('window._sharedData =')[1].split(";</script>")[0])
-    edges = json_data['entry_data']['TagPage'][0]['graphql']['hashtag']['edge_hashtag_to_media']['edges']
+
+    if mode == 'tag':
+        edges = json_data['entry_data']['TagPage'][0]['graphql']['hashtag']['edge_hashtag_to_media']['edges']
+    elif mode == 'location':
+        edges = json_data['entry_data']['LocationsPage'][0]['graphql']['location']['edge_location_to_media']['edges']
+    else:
+        edges = {}  # TODO
+
     return edges
 
 
