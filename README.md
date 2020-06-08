@@ -81,7 +81,7 @@ $ python crawler.py --mode tag --target coffee
 
 
 
-하늘 색 쳐진 숫자 부분이 합정역의 location ID에 해당하는 부분입니다. 이제 태그로 크롤링 할 때와 비슷한 방식으로 실행하면 크롤링이 시작됩니다. 저장되는 형식 또한 결과가  `result/locations`에 저장된다는 것 말고는 똑같습니다!
+하늘 색 쳐진 숫자 부분이 합정역의 location ID에 해당하는 부분입니다. 이제 태그로 크롤링 할 때와 비슷한 방식으로 실행하면 크롤링이 시작됩니다. 결과물은  `result/locations`에 저장되며, 형식은 태그로 할 때와 같습니다.
 
 ```bash
 $ python crawler.py --mode location --target 251020013
