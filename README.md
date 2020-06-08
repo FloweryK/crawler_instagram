@@ -2,19 +2,11 @@
 
 [English translation](README-eng.md)
 
-인스타그램을 크롤링해주는 봇입니다. 
-
-현재 구현된 기능은 다음과 같습니다:
+인스타그램을 크롤링해주는 봇입니다. 현재 구현된 기능은 다음과 같습니다:
 
 (1) 원하는 태그를 지정해 최근 포스트부터 크롤링 하기
 
-
-
-추가 될 기능들:
-
-(1) 원하는 지역을 위도, 경도로 지정하여 지역 내 인스타그램 포스트를 크롤링하기
-
-
+(2) 원하는 장소를 지정해 최근 포스트부터 크롤링 하기
 
 
 
@@ -43,24 +35,24 @@ $ source venv/bin/activate
 
 
 
-
-
 ## 사용하는 법
+
+#### (1) 태그로 크롤링하기
 
 예를 들어 'coffee'라는 태그를 가진 포스트들을 크롤링해보려고 한다면, 다음과 같이 실행하면 됩니다. 
 
 ```bash
-(venv) $ python3 tag_cralwer --tag coffee
-(coffee) opening url: https://www.instagram.com/explore/tags/coffee/
-(coffee) 72 posts to be added (merged_results: 0)
+$ python crawler.py --mode tag --target coffee
+(tags/coffee) opening url: https://www.instagram.com/explore/tags/coffee/
+(tags/coffee) 70 posts to be added (merged_results: 0)
 ...
 ```
 
- 크롤링 시작 직후부터 `result/` 디렉토리에 `coffee.json` 파일이 생성됩니다. 만약 크롤링을 도중에 중단 한 뒤, 나중에 다시 시작한다면 현재까지 저장된 포스트를 읽어 크롤링을 알아서 다시 이어하게 됩니다. 
+ 크롤링 시작 직후부터 `result/tags` 디렉토리에 `coffee.json` 파일이 생성됩니다. 만약 크롤링을 도중에 중단 한 뒤, 나중에 다시 시작한다면 현재까지 저장된 포스트를 읽어 크롤링을 알아서 다시 이어하게 됩니다. 
 
  `coffee.json`  파일은 각 포스트의 고유한 id를 key로, 포스트의 내용과 관련된 메타데이터를 value로 가지며, 메타데이터는 다시 종류별로 각각 key와 value를 가집니다. 아래는 `coffee.json` 을 열어 본 것입니다. 
 
-![](C:\Users\MinsangYu\Desktop\pycharm\crawler_instagram\_src\img\json.PNG)
+![](_src\img\json.PNG)
 
 | Key                | Value                                    |
 | ------------------ | ---------------------------------------- |
@@ -75,15 +67,42 @@ $ source venv/bin/activate
 
 
 
+#### (2) 장소로 크롤링하기
+
+인스타그램 포스트를 올릴 때 설정하는 위치 정보는 모두 고유한 location ID를 가지고 있습니다. 위에서 인스타그램 포스트의 태그로 크롤링을 한 것 처럼, 포스트에 Geo-tag된 장소의 location ID로 크롤링을 할 수도 있습니다. 
+
+예를 들어 합정역으로 위치 정보를 입력한 포스트들을 크롤링한다고 하면, 먼저 아래와 같이 합정역의 location ID를 얻을 수 있습니다. 
+
+![Inkedlocaion_guide_01](_src\img\Inkedlocaion_guide_01.jpg)
+
+
+
+![Inkedlocaion_guide_02](_src\img\Inkedlocaion_guide_02.jpg)
+
+
+
+하늘 색 쳐진 숫자 부분이 합정역의 location ID에 해당하는 부분입니다. 이제 태그로 크롤링 할 때와 비슷한 방식으로 실행하면 크롤링이 시작됩니다. 저장되는 형식 또한 결과가  `result/locations`에 저장된다는 것 말고는 똑같습니다!
+
+```bash
+$ python crawler.py --mode location --target 251020013
+(locations/251020013) opening url: https://www.instagram.com/explore/locations/2
+51020013/
+(locations/251020013) 24 posts to be added (merged_results: 0)
+...
+```
+
+
+
 ## Arguments
 
 ```bash
-$ python tag_crawler.py -h
-usage: tag_crawler.py [-h] --tag TAG [--limit LIMIT]
+$ python crawler.py -h
+usage: crawler.py [-h] --mode MODE --target TARGET [--limit LIMIT]
 
 optional arguments:
-  -h, --help     show this help message and exit
-  --tag TAG      An Instagram tag to crawl
-  --limit LIMIT  Post number limit (default=1000). 0 for no limit.
+  -h, --help       show this help message and exit
+  --mode MODE      crawling mode among: tag, locationid
+  --target TARGET  crawling target
+  --limit LIMIT    Post # limit (default=1000). 0 for no limit.
 ```
 
