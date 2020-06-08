@@ -51,7 +51,7 @@ def crawl(tag, limit):
             merged_json[res['id']] = res
 
         # save the result
-        save(merged_json, tag + '.json')
+        save(merged_json, 'result/' + tag + '.json')
 
 
 if __name__ == '__main__':
