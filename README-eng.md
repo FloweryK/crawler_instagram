@@ -48,7 +48,7 @@ $ python crawler.py --mode tag --target coffee
 
 `coffee.json` is a json dictionary with post ID as a key, and metadata as value for each Instagram post. the metadata is also a dictionary containing following keys and values:
 
-![](C:/Users/MinsangYu/Desktop/pycharm/crawler_instagram/_src/img/json.PNG)
+![](_src/img/json.PNG)
 
 | Key                | Value                                |
 | ------------------ | ------------------------------------ |
@@ -69,11 +69,11 @@ Each Instagram location has a unique location ID, and you can also crawl posts w
 
 If you want to crawl the posts geo-tagged as 'Hapjeong station' (합정역), you may first find the location ID of the station as follows:
 
-![Inkedlocaion_guide_01](C:/Users/MinsangYu/Desktop/pycharm/crawler_instagram/_src/img/Inkedlocaion_guide_01.jpg)
+![Inkedlocaion_guide_01](_src/img/Inkedlocaion_guide_01.jpg)
 
 
 
-![Inkedlocaion_guide_02](C:/Users/MinsangYu/Desktop/pycharm/crawler_instagram/_src/img/Inkedlocaion_guide_02.jpg)
+![Inkedlocaion_guide_02](_src/img/Inkedlocaion_guide_02.jpg)
 
 
 
